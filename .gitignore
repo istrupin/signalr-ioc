@@ -1,0 +1,95 @@
+.pubxml
+app_offline.htm
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Webstorm files
+*.idea
+.idea
+.idea/
+
+#database
+*.ldf
+*.mdf
+
+#Visual Studio files
+/.vs
+*.docstates
+*.[Oo]bj
+*.dat
+*.crc
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb *.rdl.data
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.vs/**/*sqlite*/storage.ide
+*.vs/*sqlite
+*.vs/**
+*.vs/
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+
+*.dbmdl
+Snapshots/
+
+#Tooling
+_ReSharper*/
+*.[Rr]e[Ss]harper
+[Tt]est[Rr]esult*
+packages/
+Artifacts/
+
+#Subversion files
+.svn
+
+# Office Temp Files
+~$*
+
+#Rails Heroku and other bits to ignore
+*.log  
+*.sqlite3
+db/*.sqlite3
+.bundle
+log/*
+tmp/*
+public/system/*
+
+# data dirs
+CI
+CI/*
+/src/Tops/App_Data/Elmah.Errors
+/src/Tops/App_Data
+/src/Tops.Reports/JPM11amGlobalPaymentFax.rdl.data
+/src/Tops.Reports/JPMGlobalPaymentFax.rdl.data
+/src/Tops.Reports/JPMGlobalATRFax.rdl.data
+
+!chromedriver.exe
+!IEDriverServer.exe
+/.vs/config/applicationhost.config
+/.nuget
+/.octopack
+/build
+
+\.vs/Reconciliation/v15/Browse\.VC\.opendb
+
+\.vs/Reconciliation/v15/
