@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autofac;
 using Microsoft.AspNet.SignalR.Hubs;
 
 namespace Microsoft.AspNet.SignalR.StockTicker
@@ -8,17 +9,28 @@ namespace Microsoft.AspNet.SignalR.StockTicker
     [HubName("stockTicker")]
     public class StockTickerHub : Hub
     {
-        private readonly StockTicker _stockTicker;
+        private readonly ILifetimeScope _lifetimeScope;
+        private readonly IStockTicker _stockTicker;
 
-        public StockTickerHub() :
-            this(StockTicker.Instance)
-        {
+        //public StockTickerHub() :
+        //    this(StockTicker.Instance)
+        //{
 
-        }
+        //}
 
-        public StockTickerHub(StockTicker stockTicker)
+        public StockTickerHub(IStockTicker stockTicker, ILifetimeScope lifetimeScope)
         {
             _stockTicker = stockTicker;
+            _lifetimeScope = lifetimeScope.BeginLifetimeScope();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && _lifetimeScope != null)
+            {
+                _lifetimeScope.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
         public IEnumerable<Stock> GetAllStocks()

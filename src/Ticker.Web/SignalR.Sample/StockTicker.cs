@@ -6,11 +6,11 @@ using Microsoft.AspNet.SignalR.Hubs;
 
 namespace Microsoft.AspNet.SignalR.StockTicker
 {
-    public class StockTicker
+    public class StockTicker : IStockTicker
     {
         // Singleton instance
-        private readonly static Lazy<StockTicker> _instance = new Lazy<StockTicker>(
-            () => new StockTicker(GlobalHost.ConnectionManager.GetHubContext<StockTickerHub>().Clients));
+        //private readonly static Lazy<StockTicker> _instance = new Lazy<StockTicker>(
+        //    () => new StockTicker(GlobalHost.ConnectionManager.GetHubContext<StockTickerHub>().Clients));
 
         private readonly object _marketStateLock = new object();
         private readonly object _updateStockPricesLock = new object();
@@ -27,19 +27,19 @@ namespace Microsoft.AspNet.SignalR.StockTicker
         private volatile bool _updatingStockPrices;
         private volatile MarketState _marketState;
 
-        private StockTicker(IHubConnectionContext<dynamic> clients)
+        public StockTicker(IHubConnectionContext<dynamic> clients)
         {
             Clients = clients;
             LoadDefaultStocks();
         }
 
-        public static StockTicker Instance
-        {
-            get
-            {
-                return _instance.Value;
-            }
-        }
+        //public static StockTicker Instance
+        //{
+        //    get
+        //    {
+        //        return _instance.Value;
+        //    }
+        //}
 
         private IHubConnectionContext<dynamic> Clients
         {
